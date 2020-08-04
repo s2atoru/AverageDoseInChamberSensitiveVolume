@@ -36,6 +36,7 @@ namespace VolumeAverage
         public double ThetaDelta { get; set; }
 
         
+        /// <value>Gets Voxel of dose.</value>
         public Voxel DoseVoxel { get; set; }
 
         public Cylinder(double radius, double length, int radiusSize, int lengthSize, int thetaSize)

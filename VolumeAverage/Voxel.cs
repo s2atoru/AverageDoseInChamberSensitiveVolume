@@ -6,7 +6,8 @@
     /// </summary>
     public class Voxel
     {
-        /// <value> Get the voxel values.</value>
+        /// <value>Gets the voxel values. double[XSize, YSize, ZSize].</value>
+        /// <remarks>The values are stored as Values[iz, iy, ix].</remarks>
         public double[,,] Values { get; private set; }
         ///<value>Gets the voxel size in the x direction.</value>
         public int XSize { get; private set; }
@@ -41,9 +42,9 @@
         /// <param name="xDelta">The grid width in the x direction.</param>
         /// <param name="yDelta">The grid width in the y direction.</param>
         /// <param name="zDelta">The grid width in the z direction.</param>
-        /// <param name="values">The voxel values </param>
+        /// <param name="values">The voxel values. double[xSize, ySize, zSize]. </param>
         /// <remarks>
-        /// The voxel values are stored as values[ix, iy, iz];
+        /// The voxel values are stored as values[iz, iy, ix];
         /// </remarks>
         public Voxel(int xSize, int ySize, int zSize, double x0, double y0, double z0, double xDelta, double yDelta, double zDelta, double[,,] values)
         {

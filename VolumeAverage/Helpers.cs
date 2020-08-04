@@ -28,8 +28,9 @@ namespace VolumeAverage
         /// <param name="xDelta">The grid width in the x direction.</param>
         /// <param name="yDelta">The grid width in the y direction.</param>
         /// <param name="zDelta">The grid width in the z direction.</param>
-        /// <param name="voxel">The voxel values</param>
-        /// <returns>The interpolated voxel value at (x, y, z)</returns>
+        /// <param name="voxel">The voxel values.</param>
+        /// <remarks>Th voxel values are stored as voxel[iz, iy, ix].</remarks>
+        /// <returns>The interpolated voxel value at (x, y, z).</returns>
         public static double VoxelInterpolation(double x, double y, double z, int xSize, int ySize, int zSize,
             double x0, double y0, double z0, double xDelta, double yDelta, double zDelta,
             double[,,] voxel)
@@ -39,9 +40,9 @@ namespace VolumeAverage
             int iz = (int)((z - z0) / zDelta);
 
             // for extrapolation
-            if (ix >= xSize) ix = xSize - 1;
-            if (iy >= ySize) iy = ySize - 1;
-            if (iz >= zSize) iz = zSize - 1;
+            if (ix >= xSize - 1) ix = xSize - 2;
+            if (iy >= ySize - 1) iy = ySize - 2;
+            if (iz >= zSize - 1) iz = zSize - 2;
 
             // for extrapolation
             if (ix < 0) ix = 0;
@@ -52,9 +53,8 @@ namespace VolumeAverage
                 x0 + ix * xDelta, x0 + (ix + 1) * xDelta,
                 y0 + iy * yDelta, y0 + (iy + 1) * yDelta,
                 z0 + iz * zDelta, z0 + (iz + 1) * zDelta,
-                voxel[ix, iy, iz], voxel[ix, iy, iz + 1], voxel[ix, iy + 1, iz], voxel[ix, iy + 1, iz + 1],
-                voxel[ix + 1, iy, iz], voxel[ix + 1, iy, iz + 1], voxel[ix + 1, iy + 1, iz], voxel[ix + 1, iy + 1, iz + 1]);
-
+                voxel[iz, iy, ix], voxel[iz + 1, iy, ix], voxel[iz, iy + 1, ix], voxel[iz + 1, iy + 1, ix],
+                voxel[iz, iy, ix + 1], voxel[iz + 1, iy, ix + 1], voxel[iz, iy + 1, ix + 1], voxel[iz + 1, iy + 1, ix + 1]); ;
         }
 
 
