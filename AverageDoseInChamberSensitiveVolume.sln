@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VolumeAverage", "VolumeAver
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AverageDoseEsapi", "AverageDoseEsapi\AverageDoseEsapi.csproj", "{48B2D5E2-DD19-47E0-B9D8-36EFC9B08920}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetAverageDoseInSensitiveVolumeBinaryPlugin", "GetAverageDoseInSensitiveVolumeBinaryPlugin\GetAverageDoseInSensitiveVolumeBinaryPlugin.csproj", "{0FFA6571-1DFB-4AED-AA6E-A36E4D5F433E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AverageDoseInSensitiveVolume", "AverageDoseInSensitiveVolume\AverageDoseInSensitiveVolume.csproj", "{F0B53D50-22D5-4108-9796-F11FB6F88DE8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +45,22 @@ Global
 		{48B2D5E2-DD19-47E0-B9D8-36EFC9B08920}.Release|Any CPU.Build.0 = Release|Any CPU
 		{48B2D5E2-DD19-47E0-B9D8-36EFC9B08920}.Release|x64.ActiveCfg = Release|x64
 		{48B2D5E2-DD19-47E0-B9D8-36EFC9B08920}.Release|x64.Build.0 = Release|x64
+		{0FFA6571-1DFB-4AED-AA6E-A36E4D5F433E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FFA6571-1DFB-4AED-AA6E-A36E4D5F433E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FFA6571-1DFB-4AED-AA6E-A36E4D5F433E}.Debug|x64.ActiveCfg = Debug|x64
+		{0FFA6571-1DFB-4AED-AA6E-A36E4D5F433E}.Debug|x64.Build.0 = Debug|x64
+		{0FFA6571-1DFB-4AED-AA6E-A36E4D5F433E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FFA6571-1DFB-4AED-AA6E-A36E4D5F433E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FFA6571-1DFB-4AED-AA6E-A36E4D5F433E}.Release|x64.ActiveCfg = Release|x64
+		{0FFA6571-1DFB-4AED-AA6E-A36E4D5F433E}.Release|x64.Build.0 = Release|x64
+		{F0B53D50-22D5-4108-9796-F11FB6F88DE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0B53D50-22D5-4108-9796-F11FB6F88DE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0B53D50-22D5-4108-9796-F11FB6F88DE8}.Debug|x64.ActiveCfg = Debug|x64
+		{F0B53D50-22D5-4108-9796-F11FB6F88DE8}.Debug|x64.Build.0 = Debug|x64
+		{F0B53D50-22D5-4108-9796-F11FB6F88DE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0B53D50-22D5-4108-9796-F11FB6F88DE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0B53D50-22D5-4108-9796-F11FB6F88DE8}.Release|x64.ActiveCfg = Release|x64
+		{F0B53D50-22D5-4108-9796-F11FB6F88DE8}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

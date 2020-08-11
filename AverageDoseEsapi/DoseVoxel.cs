@@ -19,26 +19,9 @@ namespace Juntendo.MedPhys.Esapi {
         {
             PlanSetup = planSetup;
             Dose doseEsapi = planSetup.Dose;
-            var doseValues = Helpers.EsapiDoseToDose3dArray(doseEsapi);
+            var doseValues = EsapiHelpers.EsapiDoseToDose3dArray(doseEsapi);
             Voxel = new VolumeAverage.Voxel(doseEsapi.XSize, doseEsapi.YSize, doseEsapi.ZSize,
                 doseEsapi.Origin.x, doseEsapi.Origin.y, doseEsapi.Origin.z, doseEsapi.XRes, doseEsapi.YRes, doseEsapi.ZRes, doseValues);
-        }
-
-        /// <summary>
-        /// ESAPI user coordinate system to the DICOM coordinate system.
-        /// </summary>
-        /// <param name="x">The x coordinate in the User coordinate system.</param>
-        /// <param name="y">The y coordinate in the User coordinate system.</param>
-        /// <param name="z">The z coordinate in the User coordinate system.</param>
-        /// <returns>Coordinates in the DICOM coordinate system.</returns>
-        public double[] UserToDicomCoordinates(double x, double y, double z)
-        {
-            var strucureSet = PlanSetup.StructureSet;
-            var imageEsapi = strucureSet.Image;
-            var vectorInUCS = new VVector(x, y, z);
-            var vectorInDCS = imageEsapi.UserToDicom(vectorInUCS, PlanSetup);
-
-            return new double[] { vectorInDCS.x, vectorInDCS.y, vectorInDCS.z };
         }
     }
 }

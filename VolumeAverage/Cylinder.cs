@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using Prism.Mvvm;
 using System;
 
 namespace VolumeAverage
@@ -7,8 +8,9 @@ namespace VolumeAverage
     /// The Cylinder class.
     /// Contains the cylinder geometrical information and the dose voxel.
     /// </summary>
-    public class Cylinder
+    public class Cylinder : BindableBase
     {
+        public string Id { get; set; }
         /// <value>Gets the center coordinate in the x direction.</value>
         public double XCenter { get; set; }
         /// <value>Gets the center coordinate in the y direction.</value>
@@ -35,11 +37,37 @@ namespace VolumeAverage
         /// <value>Gets the grid width in the theta direction.</value>
         public double ThetaDelta { get; set; }
 
-        
+        private double averageDoseValue;
+        public double AverageDoseValue
+        {
+            get { return averageDoseValue; }
+            set { SetProperty(ref averageDoseValue, value); }
+        }
+
         /// <value>Gets Voxel of dose.</value>
         public Voxel DoseVoxel { get; set; }
 
-        public Cylinder(double radius, double length, int radiusSize, int lengthSize, int thetaSize)
+        /// <value>Gets the cylinder (chamber) volume.</value>
+        public double Volume { get { return Math.PI * Radius * Radius * Length/1000; } }
+
+        public Cylinder(string id, double radius, double length, Voxel doseVoxel = null, int radiusSize = 10, int lengthSize = 10, int thetaSize = 10)
+        {
+            Id = id;
+
+            Radius = radius;
+            Length = length;
+            RadiusSize = radiusSize;
+            LengthSize = lengthSize;
+            ThetaSize = thetaSize;
+
+            RadiusDelta = radius / radiusSize;
+            LengthDelta = length / lengthSize;
+            ThetaDelta = 2 * Math.PI / thetaSize;
+
+            DoseVoxel = doseVoxel;
+        }
+
+        public Cylinder(double radius, double length, int radiusSize, int lengthSize, int thetaSize, Voxel doseVoxel)
         {
             Radius = radius;
             Length = length;
@@ -50,6 +78,8 @@ namespace VolumeAverage
             RadiusDelta = radius / radiusSize;
             LengthDelta = length / lengthSize;
             ThetaDelta = 2 * Math.PI / thetaSize;
+
+            DoseVoxel = doseVoxel;
         }
 
         public double VolumeAverageDose()
@@ -86,11 +116,13 @@ namespace VolumeAverage
             }
             sum *= RadiusDelta * ThetaDelta * LengthDelta;
             double volume = Math.PI * Radius * Radius * Length;
-            
+
             //double volume = Math.PI * Radius * Radius * (Length * Length * Length/3.0/4.0);
             //double volume = 0.5 * Radius * Radius * (2 * Math.PI * 2 * Math.PI * 2 * Math.PI / 3) * Length;
 
-            return sum / volume;
+            AverageDoseValue = sum / volume;
+
+            return AverageDoseValue;
         }
 
     }

@@ -4,6 +4,9 @@
     /// Voxel class.
     /// Contains the voxel values and its coordinate information.
     /// </summary>
+    /// <remarks>
+    /// The coordinate system is assumed to be the DICOM coordinate system.
+    /// </remarks>
     public class Voxel
     {
         /// <value>Gets the voxel values. double[XSize, YSize, ZSize].</value>
@@ -66,10 +69,10 @@
         /// <summary>
         /// Gets the voxel value
         /// </summary>
-        /// <param name="x">An x coordinate</param>
-        /// <param name="y">A y coordinate</param>
-        /// <param name="z">A z coordinate</param>
-        /// <returns></returns>
+        /// <param name="x">An x coordinate.</param>
+        /// <param name="y">A y coordinate.</param>
+        /// <param name="z">A z coordinate.</param>
+        /// <returns>The interpolated voxel value.</returns>
         public double GetVoxelValue(double x, double y, double z)
         {
             return Helpers.VoxelInterpolation(x, y, z, XSize, YSize, ZSize, X0, Y0, Z0, XDelta, YDelta, ZDelta, Values);

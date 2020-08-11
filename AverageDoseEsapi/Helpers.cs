@@ -27,16 +27,14 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Windows;
 
 using VMS.TPS.Common.Model.API;
 using VMS.TPS.Common.Model.Types;
 
 namespace Juntendo.MedPhys.Esapi
 {
-    public static class Helpers
+    public static class EsapiHelpers
     {
 
         public static Course GetCourse(Patient patient, string courseId)
@@ -119,6 +117,24 @@ namespace Juntendo.MedPhys.Esapi
             var vectorInDCS = imageEsapi.UserToDicom(vectorInUCS, planSetup);
 
             return new double[] { vectorInDCS.x, vectorInDCS.y, vectorInDCS.z };
+        }
+
+        /// <summary>
+        /// ESAPI DICOM coordinate system to the user coordinate system.
+        /// </summary>
+        /// <param name="x">The x coordinate in the DICOM coordinate system.</param>
+        /// <param name="y">The y coordinate in the DICOM coordinate system.</param>
+        /// <param name="z">The z coordinate in the DICOM coordinate system.</param>
+        /// <param name="planSetup">ESAPI PlanSetup, which is necessary to convert from the DICOM to User coordinate system.</param>
+        /// <returns>Coordinates in the User coordinate system.</returns>
+        public static double[] DicomToUserCoordinates(double x, double y, double z, PlanSetup planSetup)
+        {
+            var strucureSet = planSetup.StructureSet;
+            var imageEsapi = strucureSet.Image;
+            var vectorInDCS = new VVector(x, y, z);
+            var vectorInUCS = imageEsapi.DicomToUser(vectorInDCS, planSetup);
+
+            return new double[] { vectorInUCS.x, vectorInUCS.y, vectorInUCS.z };
         }
     }
 }
