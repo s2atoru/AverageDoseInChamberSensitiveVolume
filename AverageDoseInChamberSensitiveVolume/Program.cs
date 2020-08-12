@@ -45,7 +45,7 @@ namespace AverageDoseInChamberSensitiveVolume
         {
 
             var folderPath = @"\\10.208.223.10\Eclipse";
-            folderPath = Path.Combine(folderPath, "ResearchProjects", "DLG");
+            folderPath = Path.Combine(folderPath, "ResearchProjects", "AverageDose");
 
             // For Non-clinical Eclipse
             var computerName = System.Environment.GetEnvironmentVariable("COMPUTERNAME");
@@ -53,7 +53,7 @@ namespace AverageDoseInChamberSensitiveVolume
             var homeDrive = System.Environment.GetEnvironmentVariable("HOMEDRIVE");
             if (computerName == "ECQ275" || computerName == "ECM516NC" || computerName == "XPS13")
             {
-                folderPath = homeDrive + Path.Combine(homePath, @"Desktop\DLG");
+                folderPath = homeDrive + Path.Combine(homePath, @"Desktop\AverageDose");
             }
 
             var patientId = "Physics";

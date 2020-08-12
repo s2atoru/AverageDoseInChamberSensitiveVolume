@@ -67,7 +67,7 @@ namespace VolumeAverage
             DoseVoxel = doseVoxel;
         }
 
-        public Cylinder(double radius, double length, int radiusSize, int lengthSize, int thetaSize, Voxel doseVoxel)
+        public Cylinder(double radius, double length, Voxel doseVoxel, int radiusSize, int lengthSize, int thetaSize)
         {
             Radius = radius;
             Length = length;
