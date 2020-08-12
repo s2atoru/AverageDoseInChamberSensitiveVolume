@@ -89,15 +89,22 @@ namespace AverageDoseInChamberSensitiveVolume
                 }
             }
 
+            if (mainWindowViewModel.FieldReferencePoints.Count > 0)
+            {
+                mainWindowViewModel.SelectedFieldReferencePoint = mainWindowViewModel.FieldReferencePoints.First();
+            }
+            else
+            { throw new InvalidOperationException("No reference point"); }
+
             var doseVoxel = new DoseVoxel(currentPlanSetup);
 
             var voxel = doseVoxel.Voxel;
 
             // Add PinPoint 3D
-            mainWindowViewModel.Cylinders.Add(new Cylinder("PinPoint 3D", 1.45, 2.9, voxel));
-            mainWindowViewModel.Cylinders.Add(new Cylinder("Semiflex 3D", 2.4, 4.8, voxel));
-            mainWindowViewModel.Cylinders.Add(new Cylinder("Semiflex", 2.75, 6.5, voxel));
-            mainWindowViewModel.Cylinders.Add(new Cylinder("Farmer", 3.05, 23, voxel));
+            mainWindowViewModel.Cylinders.Add(new Cylinder("PinPoint 3D", 1.45, 2.9, voxel, 20, 20, 40));
+            mainWindowViewModel.Cylinders.Add(new Cylinder("Semiflex 3D", 2.4, 4.8, voxel, 20, 20, 40));
+            mainWindowViewModel.Cylinders.Add(new Cylinder("Semiflex", 2.75, 6.5, voxel, 20, 20, 40));
+            mainWindowViewModel.Cylinders.Add(new Cylinder("Farmer", 3.05, 23, voxel, 20, 20, 40));
 
             var mainWindow = new MainWindow(mainWindowViewModel);
 

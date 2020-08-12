@@ -72,10 +72,10 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="VMS.TPS.Common.Model.API">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Varian\Vision\13.6\Bin64\esapi\VMS.TPS.Common.Model.API.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Varian\Vision\13.6\Bin64\esapi\VMS.TPS.Common.Model.API.dll</HintPath>
     </Reference>
     <Reference Include="VMS.TPS.Common.Model.Types">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Varian\Vision\13.6\Bin64\esapi\VMS.TPS.Common.Model.Types.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Varian\Vision\13.6\Bin64\esapi\VMS.TPS.Common.Model.Types.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>

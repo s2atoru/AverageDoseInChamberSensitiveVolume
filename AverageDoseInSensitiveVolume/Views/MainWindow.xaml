@@ -56,7 +56,7 @@
                 <Button Content="OK" Width ="96" Command="{Binding OkCommand}" Click="OkButton_Click"/>
                 <Button Content="Cancel" Width ="96" Command="{Binding CancelCommand}" Click="CancelButton_Click"/>
             </StackPanel>
-            <TextBlock Text="Center of ROI"/>
+            <TextBlock Text="Center of ROI in the user coordinate system [mm]"/>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -70,9 +70,27 @@
                 <TextBlock><Run Text="X"/></TextBlock>
                 <TextBlock Grid.Column="1"><Run Text="Y"/></TextBlock>
                 <TextBlock Grid.Column="2"><Run Text="Z"/></TextBlock>
-                <TextBox Text="{Binding XCenter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1"/>
-                <TextBox Grid.Column="1" Text="{Binding YCenter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1"/>
-                <TextBox Grid.Column="2" Text="{Binding ZCenter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1"/>
+                <TextBlock Text="{Binding XCenter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1"/>
+                <TextBlock Grid.Column="1" Text="{Binding YCenter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1"/>
+                <TextBlock Grid.Column="2" Text="{Binding ZCenter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1"/>
+            </Grid>
+            <TextBlock Text="Shift of ROI [mm]"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock><Run Text="X"/></TextBlock>
+                <TextBlock Grid.Column="1"><Run Text="Y"/></TextBlock>
+                <TextBlock Grid.Column="2"><Run Text="Z"/></TextBlock>
+                <TextBox Text="{Binding XShift, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1"/>
+                <TextBox Grid.Column="1" Text="{Binding YShift, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1"/>
+                <TextBox Grid.Column="2" Text="{Binding ZShift, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1"/>
             </Grid>
             <Button Content="Calculate" Width="96" HorizontalAlignment="Left" Command="{Binding CalculateCommand}"/>
             <DataGrid ItemsSource="{Binding Cylinders}" AutoGenerateColumns="False" CanUserAddRows="False">
@@ -98,7 +116,7 @@
                     </DataGridTextColumn>
                     <DataGridTextColumn
                     Header="Average dose [Gy]"
-                    Binding="{Binding AverageDoseValue, StringFormat={}{0:0.00}, Mode=OneTime}" IsReadOnly="True">
+                    Binding="{Binding AverageDoseValue, StringFormat={}{0:0.00}, Mode=TwoWay}" IsReadOnly="True">
                     </DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>

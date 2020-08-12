@@ -18,6 +18,13 @@ namespace VolumeAverage
         /// <value>Gets the center coordinate in the z direction.</value>
         public double ZCenter { get; set; }
 
+        /// <value>Gets the shift in the x direction.</value>
+        public double XShift { get; set; }
+        /// <value>Gets the shift in the x direction.</value>
+        public double YShift { get; set; }
+        /// <value>Gets the shift in the x direction.</value>
+        public double ZShift { get; set; }
+
         /// <value>Gets the radius of a cylinder.</value>
         public double Radius { get; private set; }
         /// <value>Gets the length of a cylinder.</value>
@@ -104,9 +111,9 @@ namespace VolumeAverage
                         if (k == 0 || k == ThetaSize) thetaFactor = 0.5;
                         double theta = k * ThetaDelta;
 
-                        double x = XCenter + r * Math.Cos(theta);
-                        double y = YCenter + r * Math.Sin(theta);
-                        double z = ZCenter + l;
+                        double x = XCenter + r * Math.Cos(theta) + XShift;
+                        double y = YCenter + r * Math.Sin(theta) + YShift;
+                        double z = ZCenter + l + ZShift;
 
                         double dose = DoseVoxel.GetVoxelValue(x, y, z);
 

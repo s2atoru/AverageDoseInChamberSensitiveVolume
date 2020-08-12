@@ -49,6 +49,25 @@ namespace AverageDoseInSensitiveVolume.ViewModels
             set { SetProperty(ref zCenter, value); }
         }
 
+        private double xShift;
+        public double XShift
+        {
+            get { return xShift; }
+            set { SetProperty(ref xShift, value); }
+        }
+        private double yShift;
+        public double YShift
+        {
+            get { return yShift; }
+            set { SetProperty(ref yShift, value); }
+        }
+        private double zShift;
+        public double ZShift
+        {
+            get { return zShift; }
+            set { SetProperty(ref zShift, value); }
+        }
+
         private FieldReferencePoint selectedFieldReferencePoint = null;
         public FieldReferencePoint SelectedFieldReferencePoint
         {
@@ -84,6 +103,11 @@ namespace AverageDoseInSensitiveVolume.ViewModels
                 c.XCenter = selectedFieldReferencePoint.XDcs;
                 c.YCenter = selectedFieldReferencePoint.YDcs;
                 c.ZCenter = selectedFieldReferencePoint.ZDcs;
+
+                c.XShift = XShift;
+                c.YShift = YShift;
+                c.ZShift = ZShift;
+
                 c.VolumeAverageDose();
             }
         }
