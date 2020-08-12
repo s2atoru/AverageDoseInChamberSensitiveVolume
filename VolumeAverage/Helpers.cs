@@ -96,7 +96,7 @@ namespace VolumeAverage
                 + f212 * (x - x1) * (y2 - y) * (z - z1)
                 + f221 * (x - x1) * (y - y1) * (z2 - z)
                 + f222 * (x - x1) * (y - y1) * (z - z1);
-            return numerator / denominator;
+            return numerator * denominator;
         }
     }
 }
